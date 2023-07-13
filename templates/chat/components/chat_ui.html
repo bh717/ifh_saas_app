@@ -1,0 +1,33 @@
+{% load chat_tags %}
+{% load i18n %}
+<!-- Message list container -->
+<div id="message-list" class="pg-chat-pane">
+    <div class="pg-chat-message-system">
+      {% include "chat/components/system_icon.html" %}
+      <div class="pg-message-contents">
+        <p>{% translate "Hello, what can I help you with today?" %}</p>
+      </div>
+    </div>
+  {% for message in chat.messages.all %}
+  {% with message.content as message_text %}
+    {% if message.is_human_message %}
+      {% include 'chat/components/user_message.html' %}
+    {% else %}
+      <div class="pg-chat-message-system">
+        {% include "chat/components/system_icon.html" %}
+        <div class="pg-message-contents">
+          {{ message_text|render_markdown }}
+        </div>
+      </div>
+    {% endif %}
+  {% endwith %}
+  {% endfor %}
+</div>
+{% include 'chat/components/input_bar.html' %}
+<script>
+document.body.addEventListener('htmx:afterOnLoad', function(evt) {
+  // scroll to bottom of chat after every htmx request
+  const chatUI = document.getElementById('message-list');
+  chatUI.scrollTop = chatUI.scrollHeight;
+});
+</script>

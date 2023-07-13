@@ -1,0 +1,54 @@
+{% if active_plan_intervals|length > 1 %}
+<div class="text-center">
+  <div class="btn-group">
+  {% for interval in active_plan_intervals %}
+      <button class="btn"
+              x-data="{interval: '{{ interval.interval }}' }"
+              :class="selectedInterval === interval ? 'btn-primary' : 'btn-outline-primary'"
+              @click="selectedInterval = interval" >
+        {{ interval.name }}
+      </button>
+    {% endfor %}
+  </div>
+  {% for interval in active_plan_intervals %}
+  <div class="my-2"
+       x-data="{interval: '{{interval.interval}}' }"
+       x-show="interval === selectedInterval">
+    {{interval.help_text}}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+<div class="row my-4" id="plan-selector" >
+  {% for product in active_products %}
+    <div class="col-md">
+      <div class="plan"
+           x-data="{
+              product: {{ product.to_json }}
+           }"
+           :class="selectedProduct.product.id === product.product.id ? 'is-selected': ''"
+           @click="selectedProduct = product">
+        <div class="plan-summary">
+          <div class="plan-details">
+            <h3>{{ product.metadata.name }}</h3>
+          </div>
+        </div>
+        <p class="lead">{{ product.metadata.description }}</p>
+        <div class="my-2">
+          <p>
+            <span class="price" x-text="product.active_prices[selectedInterval].payment_amount"></span>
+            <span class="interval" x-text="'/ ' + selectedInterval"></span>
+          </p>
+        </div>
+        <ul class="upgrade-features">
+           {% for feature in product.metadata.features %}
+           <li>
+             <span class="pg-icon"><i class="fa fa-check"></i></span>
+             <span class="upgrade-feature">{{ feature }}</span>
+           </li>
+           {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+</div>

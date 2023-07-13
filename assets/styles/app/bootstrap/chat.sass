@@ -1,0 +1,35 @@
+
+.pg-chat-wrapper
+  @extend .d-flex, .flex-column
+  height: 100vh
+
+.pg-chat-pane
+  @extend .d-flex, .flex-column, .p-4, .overflow-auto, .flex-grow-1
+
+
+.pg-chat-message
+  @extend .d-flex, .p-2, .my-2, .rounded-3
+
+.pg-chat-icon
+  @extend .text-center
+  svg
+    width: 1.5rem
+    height: 1.5rem
+
+.pg-message-contents
+  @extend .mx-1
+  p
+    @extend .my-0
+
+.pg-chat-message-system
+  @extend .pg-chat-message
+  background-color: #cfe2ff
+  color: $gray-900
+
+.pg-chat-message-user
+  @extend .pg-chat-message
+  background-color: $indigo-500
+  color: white
+
+.pg-chat-input-bar
+  @extend .d-flex, .p-2, .border-top

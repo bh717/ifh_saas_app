@@ -1,0 +1,7 @@
+<div class="flex items-end justify-end" hx-swap-oob="beforeend:#message-list">
+  {% include 'chat/components/user_message.html' %}
+</div>
+<div class="flex items-end" hx-swap-oob="beforeend:#message-list">
+  {% include 'chat/components/chat_message_response.html' %}
+</div>
+{% include 'chat/components/input_bar.html' %}

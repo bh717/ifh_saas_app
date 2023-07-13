@@ -1,0 +1,22 @@
+{% extends "web/base.html" %}
+{% load static %}
+{# remove top nav and messages and reinsert into body #}
+{% block top_nav %}{% endblock %}
+{% block messages %}{% endblock %}
+{% block body %}
+{% block notifications %}
+{% endblock %}
+{% block sidebar-nav %}
+  {% include "web/components/app_nav.html" %}
+{% endblock %}
+<main class="main-content position-relative border-radius-lg ">
+  {% block top_nav_app %}
+    {% include "web/components/top_nav_app.html" %}
+  {% endblock top_nav_app %}
+  {% include 'web/components/messages.html' %}
+  <div class="container-fluid py-4">
+    {% block app %}
+    {% endblock %}
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,33 @@
+default_context:
+  _pegasus_version: 2023.5.1
+  author_name: Colin
+  ci: github_actions
+  css_framework: bootstrap
+  css_theme: bootstrap-material
+  database: sqlite
+  deploy_platform: none
+  description: The most amazing SaaS application the world has ever seen
+  domain_name: localhost:8000
+  email: cedwards@informedfamilyhealth.com
+  enable_google_login: y
+  enable_twitter_login: n
+  front_end_framework: htmx
+  post_process: y
+  project_name: InformedScribe
+  project_slug: ifh_saas_app
+  stripe_payment_mode: checkout
+  subscription_billing_model: per_unit
+  use_2fa: y
+  use_api_keys: y
+  use_cloud_media_storage: y
+  use_debug_toolbar: y
+  use_docker: n
+  use_examples: y
+  use_impersonation: y
+  use_openai: y
+  use_sentry: n
+  use_subscriptions: y
+  use_teams: n
+  use_teams_example: n
+  use_translations: y
+  use_wagtail: y

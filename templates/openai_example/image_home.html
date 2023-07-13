@@ -1,0 +1,30 @@
+{% extends 'web/app/app_base.html' %}
+{% load form_tags %}
+{% block app %}
+<nav aria-label="breadcrumbs">
+  <ol class="pg-breadcrumbs">
+    <li class=""><a href="{% url 'openai_example:openai_home' %}">Medical Assistant</a></li>
+    <li class="pg-breadcrumb-active" aria-current="page">DALL-E 2</li>
+  </ol>
+</nav>
+
+<div class="app-card">
+  <h1 class="pg-title">Dall-E 2 Example App</h1>
+  <h2 class="pg-subtitle">Quickly embed text to image functionality inside your Django application.</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% render_form_fields form %}
+    <input class="pg-button-primary" type="submit" value="Generate Images!">
+  </form>
+{% if image_urls %}
+  {% for image_url in image_urls %}
+    {% if forloop.counter0|divisibleby:3 %}<div class="pg-columns mt-2">{% endif %}
+      <div class="pg-column-one-third">
+        <img src="{{ image_url }}" />
+      </div>
+    {% if forloop.counter|divisibleby:3 %}</div>{% endif %}
+  {% endfor %}
+  </div>
+{% endif %}
+</div>
+{% endblock %}

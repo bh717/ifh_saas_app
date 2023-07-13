@@ -1,0 +1,13 @@
+{% extends "web/app/app_base.html" %}
+{% load static %}
+{% block body %}
+  {% block sidebar-nav %}
+    {% include "web/components/app_nav.html" %}
+  {% endblock %}
+<main class="main-content position-relative border-radius-lg ">
+  <div class="container-fluid">
+    {% block chat_ui %}{% endblock %}
+  </div>
+</main>
+{% endblock %}
+{% block footer %}{% endblock %}

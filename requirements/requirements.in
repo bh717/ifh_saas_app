@@ -1,0 +1,20 @@
+boto3
+Django
+django-allauth
+django-allauth-2fa
+django-waffle
+django-environ
+djangorestframework
+djangorestframework-api-key
+drf-spectacular
+stripe
+dj-stripe
+django-anymail[mailgun]  # email services
+django-hijack
+django-storages
+celery-progress
+celery
+celery[redis]
+markdown
+openai
+wagtail
